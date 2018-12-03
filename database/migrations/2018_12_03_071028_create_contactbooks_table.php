@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateContactbooksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('contactbooks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companys');
+            $table->integer('classroom_id')->unsigned();
+            $table->foreign('classroom_id')->references('id')->on('classrooms');
+            $table->text('contactbook_today');
+            $table->text('contactbook_tomorrow');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('contactbooks');
+    }
+}
