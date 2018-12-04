@@ -30,6 +30,7 @@ class CreateClassroomsTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign('classrooms_company_id_foreign');
         Schema::dropIfExists('classrooms');
     }
 }

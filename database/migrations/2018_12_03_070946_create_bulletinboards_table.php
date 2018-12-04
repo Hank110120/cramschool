@@ -30,6 +30,7 @@ class CreateBulletinboardsTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign('bulletinboards_classroom_id_foreign');                                
         Schema::dropIfExists('bulletinboards');
     }
 }

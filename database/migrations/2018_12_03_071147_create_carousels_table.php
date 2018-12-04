@@ -29,6 +29,7 @@ class CreateCarouselsTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign('carousels_company_id_foreign');                                
         Schema::dropIfExists('carousels');
     }
 }

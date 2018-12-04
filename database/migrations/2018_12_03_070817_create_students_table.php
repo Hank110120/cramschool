@@ -31,6 +31,8 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign('students_company_id_foreign');        
+        $table->dropForeign('students_parent_id_foreign');                
         Schema::dropIfExists('students');
     }
 }

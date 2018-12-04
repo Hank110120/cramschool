@@ -13,7 +13,7 @@ class CreateTeachersTable extends Migration
      */
     public function up()
     {
-        Schema::create('teacher_profiles', function (Blueprint $table) {
+        Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
@@ -31,6 +31,7 @@ class CreateTeachersTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign('teachers_user_id_foreign');        
         Schema::dropIfExists('teachers');
     }
 }

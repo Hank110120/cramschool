@@ -30,6 +30,7 @@ class CreateContactbooksTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign('contactbooks_classroom_id_foreign');                                
         Schema::dropIfExists('contactbooks');
     }
 }

@@ -32,6 +32,8 @@ class CreateTranscriptsTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign('transcripts_classroom_id_foreign');                                
+        $table->dropForeign('transcripts_student_id_foreign');                                
         Schema::dropIfExists('transcripts');
     }
 }
