@@ -15,14 +15,12 @@ class CreateTranscriptsTable extends Migration
     {
         Schema::create('transcripts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companys');
             $table->integer('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms');
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students');
-            $table->integer('transcript_score');
-            $table->integer('transcript_subject');
+            $table->integer('score');
+            $table->integer('subject');
             $table->timestamps();
         });
     }

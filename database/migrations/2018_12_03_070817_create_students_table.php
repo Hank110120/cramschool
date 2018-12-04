@@ -17,9 +17,9 @@ class CreateStudentsTable extends Migration
             $table->increments('id');
             $table->integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companys');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('student_name' , 32);
+            $table->integer('parent_id')->unsigned();
+            $table->foreign('parent_id')->references('id')->on('users');
+            $table->string('name');
             $table->timestamps();
         });
     }

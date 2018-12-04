@@ -17,8 +17,8 @@ class CreateClassroomsTable extends Migration
             $table->increments('id');
             $table->integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companys');
-            $table->string('classroom_name' , 64);
-            $table->string('classroom_teachername' , 32);
+            $table->string('name');
+            $table->string('teachername');
             $table->timestamps();
         });
     }

@@ -13,14 +13,13 @@ class CreateTeachersTable extends Migration
      */
     public function up()
     {
-        Schema::create('teachers', function (Blueprint $table) {
+        Schema::create('teacher_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companys');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('teacher_headshotpath' , 50);
-            $table->text('teacher_content');
+            $table->string('name');
+            $table->integer('order');
+            $table->text('content');
             $table->timestamps();
         });
     }

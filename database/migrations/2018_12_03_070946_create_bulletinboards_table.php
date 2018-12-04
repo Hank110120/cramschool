@@ -15,11 +15,10 @@ class CreateBulletinboardsTable extends Migration
     {
         Schema::create('bulletinboards', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companys');
             $table->integer('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms');
-            $table->text('bulletinboard_content');
+            $table->text('title');
+            $table->text('content');
             $table->timestamps();
         });
     }

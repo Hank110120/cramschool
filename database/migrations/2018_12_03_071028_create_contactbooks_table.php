@@ -15,12 +15,10 @@ class CreateContactbooksTable extends Migration
     {
         Schema::create('contactbooks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companys');
             $table->integer('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms');
-            $table->text('contactbook_today');
-            $table->text('contactbook_tomorrow');
+            $table->text('todayinfo');
+            $table->text('tomorrowinfo');
             $table->timestamps();
         });
     }
