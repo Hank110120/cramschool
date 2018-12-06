@@ -31,7 +31,9 @@ class CreateTeachersTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('teachers_user_id_foreign');        
+        Schema::table('teachers', function (Blueprint $table) {
+            $table->dropForeign('teachers_user_id_foreign');
+        });
         Schema::dropIfExists('teachers');
     }
 }

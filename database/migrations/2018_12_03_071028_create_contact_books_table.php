@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactbooksTable extends Migration
+class CreateContactBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateContactbooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('contactbooks', function (Blueprint $table) {
+        Schema::create('contact_books', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms');
-            $table->text('todayinfo');
-            $table->text('tomorrowinfo');
+            $table->text('today_info');
+            $table->text('tomorrow_info');
             $table->timestamps();
         });
     }
@@ -30,7 +30,9 @@ class CreateContactbooksTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('contactbooks_classroom_id_foreign');                                
-        Schema::dropIfExists('contactbooks');
+        Schema::table('contact_books', function (Blueprint $table) {
+            $table->dropForeign('contact_books_classroom_id_foreign');
+        });
+        Schema::dropIfExists('contact_books');
     }
 }

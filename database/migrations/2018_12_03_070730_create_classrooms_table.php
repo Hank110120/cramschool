@@ -16,9 +16,9 @@ class CreateClassroomsTable extends Migration
         Schema::create('classrooms', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companys');
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->string('name');
-            $table->string('teachername');
+            $table->string('teacher_name');
             $table->timestamps();
         });
     }
@@ -30,7 +30,9 @@ class CreateClassroomsTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('classrooms_company_id_foreign');
+        Schema::table('classrooms', function (Blueprint $table) {
+            $table->dropForeign('classrooms_company_id_foreign');
+        });
         Schema::dropIfExists('classrooms');
     }
 }

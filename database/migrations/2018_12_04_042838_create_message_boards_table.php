@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessageboardsTable extends Migration
+class CreateMessageBoardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMessageboardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('messageboards', function (Blueprint $table) {
+        Schema::create('message_boards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms');
@@ -34,9 +34,11 @@ class CreateMessageboardsTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('messageboards_classroom_id_foreign');                                
-        $table->dropForeign('messageboards_student_id_foreign');                                
-        $table->dropForeign('messageboards_teacher_id_foreign');                                
-        Schema::dropIfExists('messageboards');
+        Schema::table('message_boards', function (Blueprint $table) {
+            $table->dropForeign('message_boards_classroom_id_foreign');
+            $table->dropForeign('message_boards_student_id_foreign');
+            $table->dropForeign('message_boards_teacher_id_foreign');
+        });
+        Schema::dropIfExists('message_boards');
     }
 }

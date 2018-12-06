@@ -30,8 +30,10 @@ class CreateClassroomStudentTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('classroom_student_classroom_id_foreign');                
-        $table->dropForeign('classroom_student_student_id_foreign');                        
+        Schema::table('classroom_student', function (Blueprint $table) {
+            $table->dropForeign('classroom_student_classroom_id_foreign');
+            $table->dropForeign('classroom_student_student_id_foreign');
+        });
         Schema::dropIfExists('classroom_student');
     }
 }

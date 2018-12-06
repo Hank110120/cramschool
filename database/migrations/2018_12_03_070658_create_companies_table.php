@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanysTable extends Migration
+class CreateCompaniesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCompanysTable extends Migration
      */
     public function up()
     {
-        Schema::create('companys', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('company_license');
             $table->integer('user_id')->unsigned();
@@ -34,7 +34,9 @@ class CreateCompanysTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('companys_user_id_foreign');
-        Schema::dropIfExists('companys');
+        Schema::table('companies', function (Blueprint $table) {
+            $table->dropForeign('companies_user_id_foreign');
+        });
+        Schema::dropIfExists('companies');
     }
 }

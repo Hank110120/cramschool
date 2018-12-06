@@ -14,7 +14,7 @@
         </div>
 
         <div class="register-box-body">
-            <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
+            <p class="login-box-msg">註冊</p>
             <form action="{{ url(config('adminlte.register_url', 'register')) }}" method="post">
                 {!! csrf_field() !!}
 
@@ -28,6 +28,16 @@
                         </span>
                     @endif
                 </div>
+                <div class="form-group">
+                    <label>Select</label>
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}"
                            placeholder="{{ trans('adminlte::adminlte.email') }}">

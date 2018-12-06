@@ -16,7 +16,7 @@ class CreateCarouselsTable extends Migration
         Schema::create('carousels', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companys');
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->string('sort');
             $table->timestamps();
         });
@@ -29,7 +29,9 @@ class CreateCarouselsTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('carousels_company_id_foreign');                                
+        Schema::table('carousels', function (Blueprint $table) {
+            $table->dropForeign('carousels_company_id_foreign');
+        });
         Schema::dropIfExists('carousels');
     }
 }
