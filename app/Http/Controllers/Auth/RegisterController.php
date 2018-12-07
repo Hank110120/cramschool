@@ -48,17 +48,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'account' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:6',
-            // 'password_confirmation' => 'required|string|min:6|confirmed',
+            'company_license' => 'required|string|min:7|max:7',
+            'mobile_phone' => 'required|string|min:10|max:10',
             'name' => 'required|string|max:255',
-            'mobile_phone' => 'required|string|max:10',
-            'company_name' => 'required|string|max:255',
-            'company_phone' => 'required|string|max:10',
-            'company_address' => 'required|string|max:255',
-            'company_license' => 'required|string|max:8',
-            // 'email' => 'required|string|email|max:255|unique:users',
-
+            'account' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -71,24 +65,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'account' => $data['account'],
-            'password' => bcrypt($data['password']),
-            'name' => $data['name'],
-            'mobile_phone' => $data['mobile_phone'],
-            // 'company_name' => $data['company_name'],
-            // 'company_phone' => $data['company_phone'],
             'company_license' => $data['company_license'],
-
+            'account' => $data['account'],
+            'name' => $data['name'],
+            'password' => bcrypt($data['password']),
+            'mobile_phone' => $data['mobile_phone'],
         ]);
-        // return Company::create([
-        //     'account' => $data['account'],
-        //     'password' => bcrypt($data['password']),
-        //     'name' => $data['name'],
-        //     'mobile_phone' => $data['mobile_phone'],
-        //     'company_name' => $data['company_name'],
-        //     'company_phone' => $data['company_phone'],
-        //     'company_license' => $data['company_license'],
-
-        // ]);
     }
 }

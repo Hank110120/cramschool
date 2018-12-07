@@ -12,12 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('backend.index');
-})->name('home');
-
-Route::get('admin/pages', function () {
-    return view('admin.pages');
-})->name('pages');
+    return view('welcome');
+});
 
 Auth::routes();
 

@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>幼康</b>專業安親班',
+    'logo' => '<b>Admin</b>LTE',
 
     'logo_mini' => '<b>A</b>LT',
 

@@ -21,8 +21,8 @@
 
                 <div class="form-group has-feedback {{ $errors->has('account') ? 'has-error' : '' }}">
                     <input type="text" name="account" class="form-control" value="{{ old('account') }}"
-                           placeholder="請輸入使用者帳號">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                           placeholder="{{ trans('adminlte::adminlte.account') }}">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @if ($errors->has('account'))
                         <span class="help-block">
                             <strong>{{ $errors->first('account') }}</strong>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
                     <input type="password" name="password" class="form-control"
-                           placeholder="請輸入密碼">
+                           placeholder="{{ trans('adminlte::adminlte.password') }}">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     @if ($errors->has('password'))
                         <span class="help-block">
