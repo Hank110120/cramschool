@@ -116,7 +116,7 @@
                 <template v-if="type == 'boss'">
                     <div class="form-group has-feedback {{ $errors->has('company_license') ? 'has-error' : '' }}">
                         <input type="text" name="company_license" class="form-control" value="{{ old('company_license') }}"
-                               placeholder="" readonly="readonly" style="display:none">
+                               placeholder="" >
                         <span class="glyphicon glyphicon-list form-control-feedback"></span>
                         @if ($errors->has('company_license'))
                             <span class="help-block">
