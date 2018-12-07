@@ -71,5 +71,14 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'mobile_phone' => $data['mobile_phone'],
         ]);
+        return Company::create([
+            'company_license' => $data['company_license'],
+            'user_id' => $data['user_id'],
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'slogan' => $data['slogan'],
+            'address' => $data['address'],
+            'uql' => $data['uql'],
+        ]);
     }
 }

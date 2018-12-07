@@ -14,7 +14,7 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
-        'company_license', 'user_id', 'name', 'phone', 'slogan', 'address', 'url',
+        'company_license', 'user_id', 'name', 'phone', 'slogan', 'address', 'uql', 
     ];
 
     /**
@@ -23,6 +23,6 @@ class Company extends Model
      * @var array
      */
     protected $hidden = [
-        //
+        'password', 'remember_token',
     ];
 }
