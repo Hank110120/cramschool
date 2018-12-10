@@ -25,13 +25,13 @@
                     </select>
                 </div>
                 <template v-if="type == 'teacher'">
-                    <div class="form-group has-feedback {{ $errors->has('company_license') ? 'has-error' : '' }}">
-                        <input type="text" name="company_license" class="form-control" value="{{ old('company_license') }}"
+                    <div class="form-group has-feedback {{ $errors->has('company_license_check') ? 'has-error' : '' }}">
+                        <input type="text" name="company_license_check" class="form-control" value="{{ old('company_license_check') }}"
                                placeholder="請輸入公司驗證碼">
                         <span class="glyphicon glyphicon-list form-control-feedback"></span>
-                        @if ($errors->has('company_license'))
+                        @if ($errors->has('company_license_check'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('company_license') }}</strong>
+                                <strong>{{ $errors->first('company_license_check') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -110,13 +110,13 @@
                         <input id="upload_img" style="display:none;" type="file" onchange="readURL(this)" targetID="avatar" accept="image/gif, image/jpeg, image/png" class="form-control" value="{{ old('company_logo') }}">
                         <i class="fa fa-photo"></i> 上傳個人圖像
                     </label>
-                    <img id="avatar" src="#">
+                    <img id="avatar" src="#" style="display:block; margin:auto;">
                 </div>
                 
                 <template v-if="type == 'boss'">
                     <div class="form-group has-feedback {{ $errors->has('company_license') ? 'has-error' : '' }}">
                         <input type="text" name="company_license" class="form-control" value="{{ old('company_license') }}"
-                               placeholder="" >
+                               placeholder="" style="display:none" >
                         <span class="glyphicon glyphicon-list form-control-feedback"></span>
                         @if ($errors->has('company_license'))
                             <span class="help-block">
@@ -126,7 +126,7 @@
                     </div>
                     <div class="form-group has-feedback {{ $errors->has('company_name') ? 'has-error' : '' }}">
                         <input type="text" name="company_name" class="form-control" value="{{ old('company_name') }}"
-                               placeholder="請輸入公司名稱">
+                               placeholder="請輸入公司名稱" style="position:relative;bottom:-10px;">
                         <span class="glyphicon glyphicon-modal-window form-control-feedback"></span>
                         @if ($errors->has('company_name'))
                             <span class="help-block">
@@ -159,7 +159,7 @@
                             <input id="upload_img" style="display:none;" type="file" onchange="readURL(this)" targetID="company_logo" accept="image/gif, image/jpeg, image/png" class="form-control" value="{{ old('company_logo') }}">
                             <i class="fa fa-photo"></i> 上傳公司LOGO
                         </label>
-                        <img id="company_logo" src="#">
+                        <img id="company_logo" src="#" style="display:block; margin:auto;">
                     </div>
                     {{-- <div class="form-group has-feedback {{ $errors->has('company_logo') ? 'has-error' : '' }}">
                         <input type="file" name="company_logo" class="form-control" value="{{ old('company_logo') }}">
@@ -173,12 +173,12 @@
                 </template>
                     
                 <button type="submit"
-                        class="btn btn-primary btn-block btn-flat"
+                        class="btn btn-primary btn-block btn-flat"  style="position:relative;bottom:-10px;"
                 >{{ trans('adminlte::adminlte.register') }}</button>
             </form>
             <div class="auth-links">
                 <a href="{{ url(config('adminlte.login_url', 'login')) }}"
-                   class="text-center">{{ trans('adminlte::adminlte.i_already_have_a_membership') }}</a>
+                   class="text-center">已有帳號</a>
             </div>
         </div>
         <!-- /.form-box -->

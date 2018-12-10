@@ -15,13 +15,13 @@
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">{{ trans('adminlte::adminlte.login_message') }}</p>
+            <p class="login-box-msg">請輸入您的帳號跟密碼</p>
             <form action="{{ url(config('adminlte.login_url', 'login')) }}" method="post">
                 {!! csrf_field() !!}
 
                 <div class="form-group has-feedback {{ $errors->has('account') ? 'has-error' : '' }}">
                     <input type="text" name="account" class="form-control" value="{{ old('account') }}"
-                           placeholder="{{ trans('adminlte::adminlte.account') }}">
+                           placeholder="請輸入帳號">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @if ($errors->has('account'))
                         <span class="help-block">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
                     <input type="password" name="password" class="form-control"
-                           placeholder="{{ trans('adminlte::adminlte.password') }}">
+                           placeholder="請輸入密碼">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     @if ($errors->has('password'))
                         <span class="help-block">
@@ -43,14 +43,14 @@
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                <input type="checkbox" name="remember"> {{ trans('adminlte::adminlte.remember_me') }}
+                                <input type="checkbox" name="remember"> 記得我
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
                         <button type="submit"
-                                class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
+                                class="btn btn-primary btn-block btn-flat">登入</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -58,12 +58,12 @@
             <div class="auth-links">
                 <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}"
                    class="text-center"
-                >{{ trans('adminlte::adminlte.i_forgot_my_password') }}</a>
+                >忘記密碼</a>
                 <br>
                 @if (config('adminlte.register_url', 'register'))
                     <a href="{{ url(config('adminlte.register_url', 'register')) }}"
                        class="text-center"
-                    >{{ trans('adminlte::adminlte.register_a_new_membership') }}</a>
+                    >建立帳號</a>
                 @endif
             </div>
         </div>
