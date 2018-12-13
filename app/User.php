@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 }

@@ -18,8 +18,8 @@ class CreateTeachersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->integer('order');
-            $table->text('content');
+            $table->integer('order')->nullable();;
+            $table->text('content')->nullable();;
             $table->timestamps();
         });
     }

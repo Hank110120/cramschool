@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Traits\UploadImage;
 use App\User;
 use App\Company;
+use App\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+    use UploadImage;
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -48,8 +51,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
-            'company_license' => 'required|string|min:7|max:7',
+            'company_license' => 'required|string|max:255',
             'mobile_phone' => 'required|string|min:10|max:10',
             'name' => 'required|string|max:255',
             'account' => 'required|string|max:255|unique:users',
@@ -65,21 +69,46 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'company_license' => $data['company_license'],
             'account' => $data['account'],
             'name' => $data['name'],
             'password' => bcrypt($data['password']),
             'mobile_phone' => $data['mobile_phone'],
         ]);
-        return Company::create([
-            'company_license' => $data['company_license'],
-            'user_id' => $data['user_id'],
-            'name' => $data['name'],
-            'phone' => $data['phone'],
-            'slogan' => $data['slogan'],
-            'address' => $data['address'],
-            'uql' => $data['uql'],
-        ]);
+
+        if ($data['type'] == 'teacher'){
+            $teacher = Teacher::create([
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'order' => $data['order'] ?? null,
+                'content' => $data['content'] ?? null,
+            ]);
+        }
+        if ($data['type'] == 'boss'){
+            $company = Company::create([
+                'company_license' => $data['company_license'],
+                'user_id' => $user->id,
+                'name' => $data['company_name'],
+                'phone' => $data['company_phone'],
+                'slogan' => $data['slogan'] ?? null,
+                'address' => $data['address'] ?? null,
+                'uql' => $data['uql'] ?? null,
+            ]);
+            if ($companyLogo = $data['company_logo']){
+                $image = $this->uploadImage($companyLogo);
+    
+                $company->image()->create($image->toArray());
+            }
+        }
+        if ($avatar = $data['avatar']){
+            $image = $this->uploadImage($avatar);
+
+            $user->image()->create($image->toArray());
+        }
+
+        
+
+        return $user;
     }
 }

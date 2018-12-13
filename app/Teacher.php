@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Teacher extends Model
 {
     
 
@@ -14,7 +14,7 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
-        'company_license', 'user_id', 'name', 'phone', 'slogan', 'address', 'uql', 
+        'user_id', 'name', 'order', 'content',
     ];
 
     /**
@@ -25,11 +25,6 @@ class Company extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function boss()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
 
     public function image()
     {

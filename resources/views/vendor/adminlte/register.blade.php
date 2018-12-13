@@ -25,13 +25,13 @@
                     </select>
                 </div>
                 <template v-if="type == 'teacher'">
-                    <div class="form-group has-feedback {{ $errors->has('company_license_check') ? 'has-error' : '' }}">
-                        <input type="text" name="company_license_check" class="form-control" value="{{ old('company_license_check') }}"
+                    <div class="form-group has-feedback {{ $errors->has('company_license') ? 'has-error' : '' }}">
+                        <input type="text" name="company_license" class="form-control" value="{{ old('company_license') }}"
                                placeholder="請輸入公司驗證碼">
                         <span class="glyphicon glyphicon-list form-control-feedback"></span>
-                        @if ($errors->has('company_license_check'))
+                        @if ($errors->has('company_license'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('company_license_check') }}</strong>
+                                <strong>{{ $errors->first('company_license') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -107,7 +107,7 @@
                 </div> --}}
                 <div class="form-group has-feedback {{ $errors->has('avatar') ? 'has-error' : '' }}">
                     <label class="btn btn-primary btn-block btn-flat">
-                        <input id="upload_img" style="display:none;" type="file" onchange="readURL(this)" targetID="avatar" accept="image/gif, image/jpeg, image/png" class="form-control" value="{{ old('company_logo') }}">
+                        <input id="upload_img" name="avatar" style="display:none;" type="file" onchange="readURL(this)" targetID="avatar" accept="image/gif, image/jpeg, image/png" class="form-control" value="{{ old('company_logo') }}">
                         <i class="fa fa-photo"></i> 上傳個人圖像
                     </label>
                     <img id="avatar" src="#" style="display:block; margin:auto;">
@@ -115,8 +115,8 @@
                 
                 <template v-if="type == 'boss'">
                     <div class="form-group has-feedback {{ $errors->has('company_license') ? 'has-error' : '' }}">
-                        <input type="text" name="company_license" class="form-control" value="{{ old('company_license') }}"
-                               placeholder="" style="display:none" >
+                        <input type="text" name="company_license" class="form-control" value="<?php echo uniqid(); ?>" 
+                               placeholder=""  >
                         <span class="glyphicon glyphicon-list form-control-feedback"></span>
                         @if ($errors->has('company_license'))
                             <span class="help-block">
@@ -156,7 +156,7 @@
                     </div>
                     <div class="form-group has-feedback {{ $errors->has('company_logo') ? 'has-error' : '' }}">
                         <label class="btn btn-primary btn-block btn-flat">
-                            <input id="upload_img" style="display:none;" type="file" onchange="readURL(this)" targetID="company_logo" accept="image/gif, image/jpeg, image/png" class="form-control" value="{{ old('company_logo') }}">
+                            <input id="upload_img" name="company_logo" style="display:none;" type="file" onchange="readURL(this)" targetID="company_logo" accept="image/gif, image/jpeg, image/png" class="form-control" value="{{ old('company_logo') }}">
                             <i class="fa fa-photo"></i> 上傳公司LOGO
                         </label>
                         <img id="company_logo" src="#" style="display:block; margin:auto;">
@@ -191,7 +191,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-        type: ''
+        type: <?php if(old('type')) { echo "'" . old('type') . "'"; }  else { echo 'null'; } ?>
     }
 })
 </script>

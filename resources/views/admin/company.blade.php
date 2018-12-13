@@ -10,17 +10,92 @@
         <div class="box-header with-border">
           <h3 class="box-title">公司資料維護</h3>
         </div>
+        @if (isset($status))
+          <div class="row">
+              <div class="col-md-12">
+                <div class="box box-default">
+                  <div class="box-header with-border">
+                    <i class="fa fa-bullhorn"></i>
+                    <h3 class="box-title">提醒</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    
+                    <div class="callout callout-success">
+                        
+                        <div>
+                        <p>{{$status}}</p>
+                        </div>
+                        
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>
+              <!-- /.col -->
+          </div>
+        @endif
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form">
+        <form method="POST" action="/admin/company" enctype="multipart/form-data"> 
+          {{ csrf_field()}}
           <div class="box-body">
-            <div class="form-group">
+              <div class="form-group has-feedback {{ $errors->has('company_name') ? 'has-error' : '' }}">
+                  <input type="text" name="company_name" class="form-control" value="{{ $company->name }}"
+                         placeholder="company_name">
+                  <span class="glyphicon glyphicon-list form-control-feedback"></span>
+                  @if ($errors->has('company_name'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('company_name') }}</strong>
+                      </span>
+                  @endif
+              </div>
+              <div class="form-group has-feedback {{ $errors->has('company_phone') ? 'has-error' : '' }}">
+                  <input type="number" name="company_phone" class="form-control" value="{{ $company->phone }}"
+                         placeholder="company_phone">
+                  <span class="glyphicon glyphicon-list form-control-feedback"></span>
+                  @if ($errors->has('company_phone'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('company_phone') }}</strong>
+                      </span>
+                  @endif
+              </div>
+              <div class="form-group has-feedback {{ $errors->has('company_slogan') ? 'has-error' : '' }}">
+                  <input type="text" name="company_slogan" class="form-control" value="{{ $company->slogan }}"
+                         placeholder="company_slogan">
+                  <span class="glyphicon glyphicon-list form-control-feedback"></span>
+                  @if ($errors->has('company_slogan'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('company_slogan') }}</strong>
+                      </span>
+                  @endif
+              </div>
+              <div class="form-group has-feedback {{ $errors->has('company_address') ? 'has-error' : '' }}">
+                  <input type="text" name="company_address" class="form-control" value="{{ $company->address }}"
+                         placeholder="company_address">
+                  <span class="glyphicon glyphicon-list form-control-feedback"></span>
+                  @if ($errors->has('company_address'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('company_address') }}</strong>
+                      </span>
+                  @endif
+              </div>
+            {{-- <div class="form-group">
               <label for="company_name">公司名稱</label>
               <input type="text" class="form-control" id="company_name" placeholder="company_name">
             </div>
             <div class="form-group">
               <label for="company_phone">公司電話</label>
               <input type="number" class="form-control" id="company_phone" placeholder="company_phone">
+            </div> --}}
+            {{-- <div class="form-group">
+              <label for="company_slogan">公司標語</label>
+              <input type="text" class="form-control" id="company_name" placeholder="company_name">
+            </div>
+            <div class="form-group">
+              <label for="company_address">公司地址</label>
+              <input type="text" class="form-control" id="company_name" placeholder="company_name">
             </div>
             <div class="form-group has-feedback {{ $errors->has('company_logo') ? 'has-error' : '' }}">
                 <label class="btn btn-primary btn-block btn-flat">
@@ -28,7 +103,7 @@
                     <i class="fa fa-photo"></i> 上傳公司LOGO
                 </label>
                 <img id="company_logo" src="#" style="display:block; margin:auto;">
-            </div>
+            </div> --}}
             {{-- <div class="checkbox">
               <label>
                 <input type="checkbox"> Check me out
