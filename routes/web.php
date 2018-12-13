@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/company', 'CompanyController@edit');
+Route::get('/backend/companies/edit', 'CompanyController@edit');
 
-Route::post('/admin/company', 'CompanyController@update');
+Route::post('/backend/companies/edit', 'CompanyController@update');
 
 
 // Route::post('/admin/company', 'CompanyController@update')->name('admin/company');

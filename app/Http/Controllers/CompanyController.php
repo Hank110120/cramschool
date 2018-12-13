@@ -11,7 +11,7 @@ class CompanyController extends Controller
         $user = auth()->user();
 
 
-        return view('admin.company')->with([
+        return view('/backend/companies/edit')->with([
             'company' => $user->company
         ]);
     }
@@ -29,7 +29,7 @@ class CompanyController extends Controller
             'address' =>$request->input('company_address'),
         ]);
 
-        return view('admin.company')->with([
+        return view('/backend/companies/edit')->with([
             'company' => $company,
             'status' => '修改成功!!!',
         ]);
