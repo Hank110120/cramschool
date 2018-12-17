@@ -33,17 +33,18 @@
           <table class="table table-hover">
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Operation</th>
+              <th>company_license</th>
+              <th>account</th>
+              <th>name</th>
+              <th>mobile_phone</th>
             </tr>
             @foreach ($users as $user)
               <tr>
                 <th>{{ $user->id }}</th>
+                <th>{{ $user->company_license }}</th>
+                <th>{{ $user->account }}</th>
                 <th>{{ $user->name }}</th>
-                <th>{{ $user->email }}</th>
-                <th>{{ $user->phone }}</th>
+                <th>{{ $user->mobile_phone }}</th>
                 <th>
                   <a href="{{ route('backend.users.edit', ['user' => $user->id]) }}" class="btn btn-primary">Edit</a>
                   <form action="{{ route('backend.users.destroy', ['user' => $user->id]) }}" method="POST" class="d-inline-block">

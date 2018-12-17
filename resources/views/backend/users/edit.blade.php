@@ -15,78 +15,60 @@
           {!! csrf_field() !!}
           {{ method_field('PUT') }}
           <div class="box-body">
-            <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-              <label class="col-sm-2 control-label">Name</label>
-              <div class="col-sm-10">
-                <input class="form-control" name="name" placeholder="Name" value="{{ $user->name }}">
-                @if ($errors->has('name'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('name') }}</strong>
-                    </span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
-              <label class="col-sm-2 control-label">Phone</label>
-              <div class="col-sm-10">
-                <input class="form-control" name="phone" placeholder="Phone" value="{{ $user->phone }}">
-                @if ($errors->has('phone'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('phone') }}</strong>
-                    </span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-              <label class="col-sm-2 control-label">Email</label>
-              <div class="col-sm-10">
-                <input type="email" name="email" class="form-control" placeholder="Email" value="{{ $user->email }}">
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group {{ $errors->has('avatar') ? 'has-error' : '' }}">
-              <label class="col-sm-2 control-label">Avatar</label>
-              <div class="col-sm-10">
-                <input type="file" name="avatar" class="form-control" placeholder="Avatar">
-                @if ($errors->has('avatar'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('avatar') }}</strong>
-                    </span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-              <label class="col-sm-2 control-label">Password</label>
-              <div class="col-sm-10">
-                <input type="password" name="password" class="form-control" placeholder="Password">
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
-              <label class="col-sm-2 control-label">Password confirmation</label>
-              <div class="col-sm-10">
-                <input type="password" name="password_confirmation" class="form-control" placeholder="Password confirmation">
-                @if ($errors->has('password_confirmation'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                    </span>
-                @endif
-              </div>
+                {{-- <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
+                    <input type="password" name="password" class="form-control"
+                           placeholder="請輸入密碼">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group has-feedback {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+                    <input type="password" name="password_confirmation" class="form-control"
+                           placeholder="請再次輸入密碼">
+                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                    @if ($errors->has('password_confirmation'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                        </span>
+                    @endif
+                </div> --}}
+                <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
+                    <input type="text" name="name" class="form-control" value="{{ $user->name }}"
+                           placeholder="請輸入姓名">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group has-feedback {{ $errors->has('mobile_phone') ? 'has-error' : '' }}">
+                    <input type="text" name="mobile_phone" class="form-control" value="{{ $user->mobile_phone }}"
+                           placeholder="請輸入手機號碼">
+                    <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                    @if ($errors->has('mobile_phone'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('mobile_phone') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                {{-- <div class="form-group has-feedback {{ $errors->has('avatar') ? 'has-error' : '' }}">
+                    <label class="btn btn-primary btn-block btn-flat">
+                        <input id="upload_img" name="avatar" style="display:none;" type="file" onchange="readURL(this)" targetID="avatar" accept="image/gif, image/jpeg, image/png" class="form-control" value="{{ old('company_logo') }}">
+                        <i class="fa fa-photo"></i> 上傳個人圖像
+                    </label>
+                    <img id="avatar" src="#" style="display:block; margin:auto;">
+                </div> --}}
             </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
 			<div class="pull-right">
               <a href="{{ route('backend.users.index') }}" type="submit" class="btn btn-default">Cancel</a>
-              <button type="submit" class="btn btn-info">Create</button>
+              <button type="submit" class="btn btn-info">Update</button>
 			</div>
           </div>
           <!-- /.box-footer -->
@@ -102,4 +84,17 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script>
+        function readURL(input){
+          if(input.files && input.files[0]){
+            var imageTagID = input.getAttribute("targetID");
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              var img = document.getElementById(imageTagID);
+              img.setAttribute("src", e.target.result)           
+            }          
+            reader.readAsDataURL(input.files[0]);           
+          }           
+        }          
+    </script>
 @stop

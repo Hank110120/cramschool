@@ -54,6 +54,9 @@ class RegisterController extends Controller
 
         return Validator::make($data, [
             'company_license' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            'company_phone' => 'required|string|min:10|max:10',
+            'company_address' => 'required|string|max:255',
             'mobile_phone' => 'required|string|min:10|max:10',
             'name' => 'required|string|max:255',
             'account' => 'required|string|max:255|unique:users',
@@ -92,7 +95,7 @@ class RegisterController extends Controller
                 'name' => $data['company_name'],
                 'phone' => $data['company_phone'],
                 'slogan' => $data['slogan'] ?? null,
-                'address' => $data['address'] ?? null,
+                'address' => $data['company_address'],
                 'uql' => $data['uql'] ?? null,
             ]);
             if ($companyLogo = $data['company_logo']){

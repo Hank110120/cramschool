@@ -3,9 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 
 class CompanyController extends Controller
 {
+    /**
+    * Get a validator for an incoming registration request.
+    *
+    * @param  array  $data
+    * @return \Illuminate\Contracts\Validation\Validator
+    */
+    protected function validator(array $data)
+    {
+
+        return Validator::make($data, [
+            'company_name' => 'required|string|max:255',
+            'company_phone' => 'required|string|min:10|max:10',
+            'company_slogan' => 'required|string|max:255',
+            'company_address' => 'required|string|max:255',
+        ]);
+    }
     public function edit()
     {
         $user = auth()->user();

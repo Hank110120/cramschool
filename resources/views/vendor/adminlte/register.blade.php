@@ -126,7 +126,7 @@
                     </div>
                     <div class="form-group has-feedback {{ $errors->has('company_name') ? 'has-error' : '' }}">
                         <input type="text" name="company_name" class="form-control" value="{{ old('company_name') }}"
-                               placeholder="請輸入公司名稱" style="position:relative;bottom:-10px;">
+                               placeholder="請輸入公司名稱">
                         <span class="glyphicon glyphicon-modal-window form-control-feedback"></span>
                         @if ($errors->has('company_name'))
                             <span class="help-block">
@@ -173,7 +173,7 @@
                 </template>
                     
                 <button type="submit"
-                        class="btn btn-primary btn-block btn-flat"  style="position:relative;bottom:-10px;"
+                        class="btn btn-primary btn-block btn-flat" 
                 >{{ trans('adminlte::adminlte.register') }}</button>
             </form>
             <div class="auth-links">
