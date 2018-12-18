@@ -44,6 +44,18 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register')->with([
+            'companies' => Company::all()
+        ]);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -54,9 +66,9 @@ class RegisterController extends Controller
 
         return Validator::make($data, [
             'company_license' => 'required|string|max:255',
-            'company_name' => 'required|string|max:255',
-            'company_phone' => 'required|string|min:10|max:10',
-            'company_address' => 'required|string|max:255',
+            // 'company_name' => 'required|string|max:255',
+            // 'company_phone' => 'required|string|min:10|max:10',
+            // 'company_address' => 'required|string|max:255',
             'mobile_phone' => 'required|string|min:10|max:10',
             'name' => 'required|string|max:255',
             'account' => 'required|string|max:255|unique:users',
