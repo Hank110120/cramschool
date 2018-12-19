@@ -20,7 +20,10 @@ class ClassroomsController
 
     public function index()
     {
-        return view('backend.classrooms.index')->with(['classrooms' => Classroom::all()]);
+        return view('backend.classrooms.index')->with([
+            'classrooms' => Classroom::all(),
+            'teachers' => Teacher::all(),
+            ]);
     }
 
     public function create()
@@ -40,9 +43,12 @@ class ClassroomsController
         return redirect()->route('backend.classrooms.index')->with(['status' => 'create success']);
     }
 
-    public function edit(Classroom $classroom)
+    public function edit(Classroom $classroom, Teacher $teachers)
     {
-        return view('backend.classrooms.edit')->with(['classroom' => $classroom]);
+        return view('backend.classrooms.edit')->with([
+            'classroom' => $classroom,
+            'teachers' => Teacher::all(),
+            ]);
     }
 
     public function update(UpdateClassroomRequest $request, Classroom $classroom)

@@ -34,7 +34,7 @@
               <div class="col-sm-10">
                   <select name="teacher_id" class="form-control">
                       @foreach ($teachers as $teacher)
-                          <option value="{{ $teacher->teacher_id }}">{{ $teacher->name }}</option>
+                          <option value="{{ $teacher->user_id }}">{{ $teacher->name }}</option>
                       @endforeach
                   </select>
                 @if ($errors->has('teacher_id'))
@@ -44,16 +44,6 @@
                 @endif
               </div>
             </div>
-
-            <div class="col-sm-10 form-group {{ $errors->has('teacher_id') ? 'has-error' : '' }}">
-                
-                @if ($errors->has('teacher_id'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('teacher_id') }}</strong>
-                    </span>
-                @endif
-            </div>
-
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

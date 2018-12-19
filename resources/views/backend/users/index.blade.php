@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>Users List</h1>
-@stop
+@endsection
 
 @section('content')
   <div id="app" class="row">
@@ -62,7 +62,7 @@
       <!-- /.box -->
     </div>
   </div>
-@stop
+@endsection
 
 @section('css')
   <link rel="stylesheet" href="/css/admin_custom.css">
@@ -71,7 +71,7 @@
       display: inline-block;
     }
   </style>
-@stop
+@endsection
 
 @section('js')
   <script>
@@ -87,4 +87,4 @@
       }
     })
   </script>
-@stop
+@endsection

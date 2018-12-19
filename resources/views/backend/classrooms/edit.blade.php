@@ -29,8 +29,7 @@
                         @endif
                     </div> --}}
                     <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
-                        <input type="text" name="name" class="form-control" value="{{ $classroom->name }}"
-                            placeholder="請輸入姓名">
+                        <input type="text" name="name" class="form-control" value="{{ $classroom->name }}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('name'))
                             <span class="help-block">
@@ -38,9 +37,19 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group has-feedback {{ $errors->has('mobile_phone') ? 'has-error' : '' }}">
-                        <input type="text" name="mobile_phone" class="form-control" value="{{ $classroom->teacher_id }}"
-                            placeholder="請輸入手機號碼">
+                    <div class="form-group has-feedback {{ $errors->has('teacher_id') ? 'has-error' : '' }}">
+                            <div class="">
+                                <select name="teacher_id" class="form-control">
+                                    @foreach ($teachers as $teacher)
+                                        <option value="{{ $teacher->user_id }}">{{ $teacher->name }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('teacher_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('teacher_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
                         @if ($errors->has('mobile_phone'))
                             <span class="help-block">

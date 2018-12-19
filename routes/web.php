@@ -21,7 +21,11 @@ Route::get('/', function () {
 Route::get('/backend/companies/edit', 'CompanyController@edit');
 
 Route::post('/backend/companies/edit', 'CompanyController@update');
-
+// Route::group(['prefix' => 'backend', 'namespace' => 'Backend'], function () {
+//     Route::name('backend.')->group(function () {
+//         Route::resource('companies', 'CompanyController');
+//     });
+// });
 
 // Route::post('/admin/company', 'CompanyController@update')->name('admin/company');
 
