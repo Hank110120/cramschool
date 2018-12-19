@@ -32,7 +32,11 @@
             <div class="form-group {{ $errors->has('teacher_id') ? 'has-error' : '' }}">
               <label class="col-sm-2 control-label">teacher_id</label>
               <div class="col-sm-10">
-                <input class="form-control" name="teacher_id" placeholder="teacher_id">
+                  <select name="teacher_id" class="form-control">
+                      @foreach ($teachers as $teacher)
+                          <option value="{{ $teacher->teacher_id }}">{{ $teacher->name }}</option>
+                      @endforeach
+                  </select>
                 @if ($errors->has('teacher_id'))
                     <span class="help-block">
                         <strong>{{ $errors->first('teacher_id') }}</strong>
@@ -40,7 +44,16 @@
                 @endif
               </div>
             </div>
-            
+
+            <div class="col-sm-10 form-group {{ $errors->has('teacher_id') ? 'has-error' : '' }}">
+                
+                @if ($errors->has('teacher_id'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('teacher_id') }}</strong>
+                    </span>
+                @endif
+            </div>
+
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

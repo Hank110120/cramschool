@@ -25,6 +25,18 @@
                     </select>
                 </div>
                 <template v-if="type == 'teacher'">
+                    <div class="form-group has-feedback {{ $errors->has('company_license') ? 'has-error' : '' }}">
+                        <select name="company_license" class="form-control">
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->company_license }}">{{ $company->name }}</option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('company_license'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('company_license') }}</strong>
+                            </span>
+                        @endif
+                    </div>
                     {{-- <div class="form-group has-feedback {{ $errors->has('company_license') ? 'has-error' : '' }}">
                         <input type="text" name="company_license" class="form-control" value="{{ old('company_license') }}"
                                placeholder="請輸入公司驗證碼">
@@ -37,18 +49,6 @@
                     </div> --}}
                     
                 </template>
-                <div class="form-group has-feedback {{ $errors->has('company_license') ? 'has-error' : '' }}">
-                    <select name="company_license" class="form-control">
-                        @foreach ($companies as $company)
-                            <option value="{{ $company->company_license }}">{{ $company->name }}</option>
-                        @endforeach
-                    </select>
-                    @if ($errors->has('company_license'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('company_license') }}</strong>
-                        </span>
-                    @endif
-                </div>
                 <div class="form-group has-feedback {{ $errors->has('account') ? 'has-error' : '' }}">
                     <input type="text" name="account" class="form-control" value="{{ old('account') }}"
                            placeholder="請輸入使用者帳號">

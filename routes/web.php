@@ -25,46 +25,26 @@ Route::post('/backend/companies/edit', 'CompanyController@update');
 
 // Route::post('/admin/company', 'CompanyController@update')->name('admin/company');
 
-
-
-Route::get('/backend/bulletin_boards/edit', function () {
-    return view('backend/bulletin_boards/edit');
+Route::group(['prefix' => 'backend', 'namespace' => 'Backend'], function () {
+    Route::name('backend.')->group(function () {
+        Route::resource('bulletin_boards', 'Bulletin_boardsController');
+    });
 });
-
-Route::get('/backend/carousels/edit', function () {
-    return view('backend/carousels/edit');
+Route::group(['prefix' => 'backend', 'namespace' => 'Backend'], function () {
+    Route::name('backend.')->group(function () {
+        Route::resource('carousels', 'CarouselsController');
+    });
 });
-
-Route::get('/backend/classrooms/index', function () {
-    return view('backend/classrooms/index');
-});
-Route::get('/backend/classrooms/create', function () {
-    return view('backend/classrooms/create');
-});
-
 Route::group(['prefix' => 'backend', 'namespace' => 'Backend'], function () {
     Route::name('backend.')->group(function () {
         Route::resource('classrooms', 'ClassroomsController');
     });
 });
-
-
-Route::get('/backend/teachers/index', function () {
-    return view('backend/teachers/index');
+Route::group(['prefix' => 'backend', 'namespace' => 'Backend'], function () {
+    Route::name('backend.')->group(function () {
+        Route::resource('transcripts', 'TranscriptsController');
+    });
 });
-
-Route::get('/admin/transcript', function () {
-    return view('admin/transcript');
-});
-
-Route::get('/admin/student', function () {
-    return view('admin/student');
-});
-
-Route::get('/admin/password', function () {
-    return view('admin/password');
-});
-
 
 Auth::routes();
 

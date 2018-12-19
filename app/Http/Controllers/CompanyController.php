@@ -28,7 +28,6 @@ class CompanyController extends Controller
     {
         $user = auth()->user();
 
-
         return view('/backend/companies/edit')->with([
             'company' => $user->company
         ]);

@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreClassroomRequest;
 use App\Http\Requests\UpdateClassroomRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Traits\UploadImage;
+use App\User;
+use App\Company;
+use App\Teacher;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class ClassroomsController
 {
+
     public function index()
     {
         return view('backend.classrooms.index')->with(['classrooms' => Classroom::all()]);
@@ -17,7 +25,7 @@ class ClassroomsController
 
     public function create()
     {
-        return view('backend.classrooms.create');
+        return view('backend.classrooms.create')->with(['teachers' => Teacher::all()]);
     }
 
     public function store(StoreClassroomRequest $request)

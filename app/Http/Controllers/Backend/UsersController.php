@@ -15,7 +15,9 @@ class UsersController
 
     public function index()
     {
+        $users = auth()->user();
         return view('backend.users.index')->with(['users' => User::all()]);
+        // return view('backend.users.index')->with(['users' => $user->company]);
     }
 
     public function create()
