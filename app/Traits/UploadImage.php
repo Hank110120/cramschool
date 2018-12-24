@@ -11,7 +11,7 @@ trait UploadImage
         $name = $image->getClientOriginalName();
         $type = $image->getMimeType();
         $size = $image->getSize();
-        $path = $image->store('images');
+        $path = $image->store('public');
 
         return Image::make(compact('name', 'type', 'size', 'path'));
     }

@@ -63,17 +63,25 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $request = request();
 
-        return Validator::make($data, [
+        $rules = [
             'company_license' => 'required|string|max:255',
-            // 'company_name' => 'required|string|max:255',
-            // 'company_phone' => 'required|string|min:10|max:10',
-            // 'company_address' => 'required|string|max:255',
             'mobile_phone' => 'required|string|min:10|max:10',
             'name' => 'required|string|max:255',
             'account' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+        ];
+
+        if($request->input("type") == "boss"){
+            $rules = array_merge($rules, [  
+                'company_name' => 'required|string|max:255',
+                'company_phone' => 'required|string|min:10|max:10',
+                'company_address' => 'required|string|max:255'
+            ]);
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**

@@ -28,4 +28,14 @@ class Classroom extends Model
     {
         return $this->belongsTo(User::class, 'teacher_id', 'id');
     }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

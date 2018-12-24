@@ -22,6 +22,7 @@
           </div> --}}
         </div>
         <!-- /.box-header -->
+        
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
             <tr>
@@ -33,8 +34,8 @@
             @foreach ($classrooms as $classroom)
               <tr>
                 <th>{{ $classroom->id }}</th>
-                <th>{{ $classroom->company_id }}</th>
-                <th>{{ $classroom->teacher_id }}</th>
+                <th>{{ $classroom->company->name }}</th>
+                <th>{{ $classroom->teacher ? $classroom->teacher->name : '' }}</th>
                 <th>{{ $classroom->name }}</th>
                 <th>
                   <a href="{{ route('backend.classrooms.edit', ['classroom' => $classroom->id]) }}" class="btn btn-primary">Edit</a>

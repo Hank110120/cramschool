@@ -20,10 +20,10 @@ class ClassroomsController
 
     public function index()
     {
+        
         return view('backend.classrooms.index')->with([
-            'classrooms' => Classroom::all(),
-            'teachers' => Teacher::all(),
-            ]);
+            'classrooms' => Classroom::with("teacher", "company")->get(),
+        ]);
     }
 
     public function create()

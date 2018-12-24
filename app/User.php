@@ -36,4 +36,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Company::class);
     }
+
+    public function belongToCompany()
+    {
+        return Company::where('company_license', $this->company_license)->first();
+    }
+    public function teacher(){
+        
+    }
 }

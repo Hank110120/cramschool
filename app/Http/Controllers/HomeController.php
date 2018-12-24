@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dd(auth()->user()->belongToCompany());
         return view('home');
     }
 }
